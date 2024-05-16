@@ -176,11 +176,11 @@ router.post('/transport/movement', async (req, res) => {
 
 });
 
-router.get('/transport/students', async (req, res) => {
-    const {transport_id} = req.body;
-    Transport_listDb.findById(transport_id).then( async list => {
+router.get('/all/theaters/', async (req, res) => {
+    const {theater_id} = req.body;
+    theaterDb.find({}).then( async list => {
         if (list) {
-            res.status(200).json({students: list.children});
+            res.status(200).json({theaters: list});
         } else {
             console.error('Не удалось получить объект базы данных');
         }
